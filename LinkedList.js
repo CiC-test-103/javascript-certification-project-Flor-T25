@@ -306,23 +306,17 @@ class LinkedList {
   async loadFromJSON(fileName) {
     // TODO
 
-    // Ensure the filename has a .json extension if it's not already included
-    let jsonFileName = fileName;
-    if (!jsonFileName.endsWith('.json')) {
-      jsonFileName += '.json'; 
-    }
-
     // Import fs/promises within the function.
     const fs = require('fs/promises');
 
     try {
      // Read the file and parse the JSON.
-      const data = await fs.readFile(jsonFileName, 'utf-8');
+      const data = await fs.readFile(fileName, 'utf-8');
       const students = JSON.parse(data);
       
        // If file is empty or contains invalid data, handle it
       if (!students || students.length === 0) {
-        throw new Error(`The file "${jsonFileName}" contains no data.`);
+        throw new Error(`The file "${fileName}" contains no data.`);
       }
       
       this.clearStudents(); // Clear the existing LinkedList

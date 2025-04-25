@@ -215,11 +215,17 @@ async function handleCommand(command) {
       // --------> WRITE YOUR CODE BELOW
       const [loadFileName] = args;
 
+      // Ensure the filename has a .json extension if it's not already included
+      let jsonFileNameToLoad = loadFileName;
+      if (!jsonFileNameToLoad.endsWith('.json')) {
+        jsonFileNameToLoad += '.json'; 
+      }
+
       // Load the LinkedList from a JSON file
       try {
-        await studentManagementSystem.loadFromJSON(loadFileName);
+        await studentManagementSystem.loadFromJSON(jsonFileNameToLoad);
         // If the file is loaded successfully, output the updated list.
-        console.log(`Data loaded from file: "${loadFileName}".`);
+        console.log(`Data loaded from file: "${jsonFileNameToLoad}".`);
         console.log('Updated student list:');
         console.log(studentManagementSystem.displayStudents()); 
       } catch (error) {
