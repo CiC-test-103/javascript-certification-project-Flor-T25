@@ -166,7 +166,6 @@ class LinkedList {
       return "The students' list is empty.";
     }
 
-
     let result = '';
     let current = this.head; // Start from the head of the list
 
@@ -180,6 +179,7 @@ class LinkedList {
     }
 
     return result; // Return the final string of student names
+
   }
 
   /**
@@ -330,7 +330,7 @@ class LinkedList {
     } catch (error) {
       // Handle errors properly if the file doesn't exist
       if (error.code === 'ENOENT') {
-        throw new Error(`Error: The file "${jsonFileName}" does not exist.`); 
+        throw new Error(`Error: The file "${fileName}" does not exist.`); 
       } else {
         throw new Error('Error loading data from JSON file:', error); 
       }
